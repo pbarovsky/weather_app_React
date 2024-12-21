@@ -1,6 +1,6 @@
 export const weatherColors = {
   Clear_day: "#f7ff8e", // желтый
-  Clear_night: "#545454", // темно-серый
+  Clear_night: "#6B6B6B", // темно-серый
   Clouds: "#CCCCCC", // светло-серый 2
   Rain: "#CAD9DA", // серо-голубой
   Snow: "#BCE7FD", // голубой светлый
