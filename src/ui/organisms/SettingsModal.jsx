@@ -1,21 +1,20 @@
+import React, { useContext } from "react";
 import SettingOption from '../molecules/SettingsOption';
 import Button from '../atoms/Button';
-import sc from './SettingsModal.module.css';
+import { AppContext } from "../../context/AppContext";
 import { createPortal } from "react-dom";
+import sc from './SettingsModal.module.css';
 
 import DELETE_ICON from "../../assets/icons/regular/delete.svg";
 
-const SettingsModal = ({ settings, updateSettings, onClose }) => {
+const SettingsModal = ({ onClose }) => {
+  const { settings, updateSetting } = useContext(AppContext);
 
-  const handleCheckboxChange = (key) => () => {
-    updateSettings(key, !settings[key]);
-  };
-
-  const settingsOptions = [
+  const options = [
     { label: "Видимость", key: "visibility" },
     { label: "Облачность", key: "clouds" },
     { label: "Закат", key: "sunset" },
-    { label: "Восход", key: "sunrise" }
+    { label: "Восход", key: "sunrise" },
   ];
 
   return createPortal(
@@ -28,12 +27,12 @@ const SettingsModal = ({ settings, updateSettings, onClose }) => {
           </Button>
         </header>
         <div className={sc.modal__checkboxes__wrapper}>
-          {settingsOptions.map(({ label, key }) => (
+          {options.map(({ label, key }) => (
             <SettingOption
               key={key}
               label={label}
               checked={settings[key]}
-              onChange={handleCheckboxChange(key)}
+              onChange={(newChecked) => updateSetting(key, newChecked)}
             />
           ))}
         </div>

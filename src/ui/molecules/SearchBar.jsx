@@ -1,4 +1,5 @@
 import Input from "../atoms/Input";
+
 const SearchBar = ({
   value,
   onChange,

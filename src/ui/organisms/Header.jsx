@@ -6,7 +6,6 @@ import sc from "./Header.module.css";
 import SettingsModal from "./SettingsModal";
 
 import { WeatherContext } from "../../context/WeatherContext";
-import { AppContext } from "../../context/AppContext";
 import { formatSearch } from "../../helpers/formatSearch";
 
 import SEARCH_ICON from "../../assets/icons/regular/search.svg";
@@ -15,7 +14,6 @@ import SETTINGS_ICON from "../../assets/icons/regular/settings.svg";
 const Header = ({ isSettingsOpen, toggleSettings }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { getWeatherByCity, getWeatherByCoords } = useContext(WeatherContext);
-  const { settings, updateSettings } = useContext(AppContext);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -44,13 +42,7 @@ const Header = ({ isSettingsOpen, toggleSettings }) => {
         <Button onClick={toggleSettings}>
           <img src={SETTINGS_ICON} alt="Settings" />
         </Button>
-        {isSettingsOpen && (
-          <SettingsModal
-            settings={settings}
-            updateSettings={updateSettings}
-            onClose={toggleSettings}
-          />
-        )}
+        {isSettingsOpen && <SettingsModal onClose={toggleSettings} />}
       </div>
     </header>
   );

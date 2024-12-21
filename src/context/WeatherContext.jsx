@@ -3,47 +3,40 @@ import axios from "axios";
 
 export const WeatherContext = createContext();
 
+const API_KEY = "aae5541070e86f4526a7113a1f6692c2"; // Вставьте ваш API-ключ OpenWeatherMap
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+const TIMEOUT = 8000; // Таймаут для запросов
+
+// Функция для выполнения запроса с таймаутом
+const fetchWithTimeout = async (url, params, timeout = TIMEOUT) => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    const response = await axios.get(url, {
+      params,
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+    return response.data;
+  } catch (err) {
+    if (controller.signal.aborted) {
+      throw new Error("Превышено время ожидания запроса");
+    }
+    throw err;
+  }
+};
+
 export const WeatherProvider = ({ children }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_KEY = "aae5541070e86f4526a7113a1f6692c2"; // Вставьте ваш API-ключ OpenWeatherMap
-
-  // Функция для выполнения запроса с таймаутом
-  const fetchWithTimeout = async (url, params, timeout = 8000) => {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-    try {
-      const response = await axios.get(url, {
-        params,
-        signal: controller.signal,
-      });
-      clearTimeout(timeoutId);
-      return response.data;
-    } catch (err) {
-      if (controller.signal.aborted) {
-        throw new Error("Превышено время ожидания запроса");
-      }
-      throw err;
-    }
-  };
-
-  // Получение погоды по названию города
-  const getWeatherByCity = async (city) => {
+  const fetchWeatherData = async (params) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchWithTimeout(
-        "https://api.openweathermap.org/data/2.5/weather",
-        {
-          q: city,
-          units: "metric",
-          lang: "ru",
-          appid: API_KEY,
-        }
-      );
+      const data = await fetchWithTimeout(BASE_URL, { ...params, appid: API_KEY });
       setWeatherData(data);
     } catch (err) {
       setError(err.message || "Ошибка при получении данных о погоде");
@@ -52,31 +45,11 @@ export const WeatherProvider = ({ children }) => {
     }
   };
 
+  // Получение погоды по названию города
+  const getWeatherByCity = (city) => fetchWeatherData({ q: city, units: "metric", lang: "ru" });
+
   // Получение погоды по координатам
-  const getWeatherByCoords = useCallback(
-    async (lat, lon) => {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await fetchWithTimeout(
-          "https://api.openweathermap.org/data/2.5/weather",
-          {
-            lat,
-            lon,
-            units: "metric",
-            lang: "ru",
-            appid: API_KEY,
-          }
-        );
-        setWeatherData(data);
-      } catch (err) {
-        setError(err.message || "Ошибка при получении данных о погоде");
-      } finally {
-        setLoading(false);
-      }
-    },
-    [API_KEY]
-  );
+  const getWeatherByCoords = (lat, lon) => fetchWeatherData({ lat, lon, units: "metric", lang: "ru" });
 
   // Автоматическое получение погоды по геолокации
   useEffect(() => {
@@ -100,7 +73,7 @@ export const WeatherProvider = ({ children }) => {
     };
 
     fetchInitialWeather();
-  }, [getWeatherByCoords]); 
+  }, [getWeatherByCoords]);
 
   return (
     <WeatherContext.Provider
