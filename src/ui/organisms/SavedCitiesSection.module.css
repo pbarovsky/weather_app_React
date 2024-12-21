@@ -57,7 +57,7 @@
   width: 260px;
 } 
 
-@media (max-width: 1060px) {
+@media (max-width: 1120px) {
   .SavedCities_card {
     min-height: 300px;
     align-self: flex-start;

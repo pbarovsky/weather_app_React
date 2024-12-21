@@ -1,6 +1,6 @@
 .header {
   margin: 0 auto;
-  width: 1060px;
+  width: 1085px;
   border: 1px solid #ccc;
   padding: 15px 20px;
   gap: 30px;
@@ -44,7 +44,7 @@
   justify-content: space-between;
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1120px) {
   .header {
     width: 730px;
   }

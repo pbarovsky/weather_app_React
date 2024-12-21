@@ -41,7 +41,6 @@ const Header = ({ isSettingsOpen, toggleSettings }) => {
             </Button>
           </SearchBar>
         </div>
-
         <Button onClick={toggleSettings}>
           <img src={SETTINGS_ICON} alt="Settings" />
         </Button>

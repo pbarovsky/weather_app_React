@@ -1,13 +1,18 @@
+import { useState } from 'react';
 import sc from "./Checkbox.module.css";
 
 const Checkbox = ({ checked, onChange, className = "" }) => {
+  const [isChecked, setIsChecked] = useState(checked);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+    onChange(!isChecked);
+  };
+
   return (
-    <label className={`${sc["toggler-wrapper"]} ${sc["style-10"]} ${className}`}>
-      <input type="checkbox" checked={checked} onChange={onChange} />
-      <div className={sc["toggler-slider"]}>
-        <div className={sc["toggler-knob"]}></div>
-      </div>
-    </label>
+    <div className={`${sc.togglerWrapper} ${className}`} onClick={handleToggle}>
+      <i className={`bi ${isChecked ? 'bi-toggle-on' : 'bi-toggle-off'} ${sc.toggleIcon}`}></i>
+    </div>
   );
 };
 
