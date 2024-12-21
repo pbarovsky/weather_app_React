@@ -1,30 +1,34 @@
-// App.jsx
-import React from "react";
-import Header from "./components/Header";
-import WeatherBlock from "./components/WeatherBlock";
-import DetailsBlock from "./components/DetailsBlock";
-import SavedCitiesBlock from "./components/SavedCitiesBlock";
+import React, {useState} from "react";
 import { WeatherProvider } from "./context/WeatherContext";
 import AppProvider from "./context/AppContext";
+import Header from "./ui/organisms/Header";
+import WeatherSection from "./ui/organisms/WeatherSection"
+import DetailsSection from "./ui/organisms/DetailsSection"
+import SavedCitiesSection from './ui/organisms/SavedCitiesSection'
 import "./App.css";
 
-function App() {
+const App = () => {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const toggleSettings = () => setIsSettingsOpen((prev) => !prev);
+
+
   return (
     <AppProvider>
       <WeatherProvider>
         <div className="App">
-          <Header />
+          <Header isSettingsOpen={isSettingsOpen} toggleSettings={toggleSettings}/>
           <div className="flexer-container">
             <main className="main">
-              <WeatherBlock />
-              <DetailsBlock />
+              <WeatherSection />
+              <DetailsSection />
             </main>
-            <SavedCitiesBlock className="SavedCitiesBlock" />
+            <SavedCitiesSection className="SavedCitiesBlock" />
           </div>
         </div>
       </WeatherProvider>
     </AppProvider>
   );
-}
+};
 
 export default App;

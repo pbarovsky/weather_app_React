@@ -1,19 +1,18 @@
-import React, { useContext } from "react";
+import { useContext } from 'react';
+import { WeatherContext } from '../../context/WeatherContext';
+import { AppContext } from '../../context/AppContext';
+import { formatTime } from '../../helpers/formatTime';
+import sc from './DetailsSection.module.css';
 
-import { WeatherContext } from "../context/WeatherContext";
-import { AppContext } from "../context/AppContext";
-import { formatTime } from "../helpers/formatTime";
-
-import sc from "./DetailsBlock.module.css";
-
-const DetailsBlock = () => {
+const DetailsSection = () => {
   const { weatherData, loading, error } = useContext(WeatherContext);
   const { settings } = useContext(AppContext);
+
   const { main, wind, visibility, clouds, sys } = weatherData || {};
 
-  if (loading) return <p>Загрузка...</p>
-  if (error) return <div>{error}</div>
-  if (!weatherData) return <div>Введите город или координаты для поиска</div>
+  if (loading) return <p>Загрузка...</p>;
+  if (error) return <div>{error}</div>;
+  if (!weatherData) return <div>Введите город или координаты для поиска</div>;
 
   return (
     <section className={sc.detail_card}>
@@ -30,4 +29,4 @@ const DetailsBlock = () => {
   );
 };
 
-export default DetailsBlock;
+export default DetailsSection

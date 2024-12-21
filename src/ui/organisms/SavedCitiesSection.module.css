@@ -1,4 +1,4 @@
-.SavedCitiesBlock_card {
+.SavedCities_card {
   border: 1px solid #ccc;
   width: 300px;
   min-height: 300px;
@@ -13,7 +13,7 @@
   gap: 15px;
 }
 
-.SavedCitiesBlock_card ul {
+.SavedCities_card ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -25,7 +25,7 @@
   gap: 15px;
 }
 
-.SavedCitiesBlock_card li {
+.SavedCities_card li {
   padding: 5px 15px;
   margin: 0px;
   cursor: pointer;
@@ -58,25 +58,25 @@
 } 
 
 @media (max-width: 1060px) {
-  .SavedCitiesBlock_card {
+  .SavedCities_card {
     min-height: 300px;
     align-self: flex-start;
   }
 }
 
 @media (max-width: 760px) {
-  .SavedCitiesBlock_card {
+  .SavedCities_card {
     min-height: 420px;
   }
 }
 
 @media (max-width: 660px) {
-  .SavedCitiesBlock_card {
+  .SavedCities_card {
     width: 500px;
     min-height: 200px;
   }
 
-  .SavedCitiesBlock_card li {
+  .SavedCities_card li {
     width: 460px;
   }
 
@@ -86,12 +86,12 @@
 }
 
 @media (max-width: 520px) {
-  .SavedCitiesBlock_card {
+  .SavedCities_card {
     width: 400px;
     min-height: 200px;
   }
 
-  .SavedCitiesBlock_card li {
+  .SavedCities_card li {
     width: 360px;
   }
 
@@ -101,12 +101,12 @@
 }
 
 @media (max-width: 420px) {
-  .SavedCitiesBlock_card {
+  .SavedCities_card {
     width: 300px;
     min-height: 200px;
   }
 
-  .SavedCitiesBlock_card li {
+  .SavedCities_card li {
     width: 260px;
   }
 

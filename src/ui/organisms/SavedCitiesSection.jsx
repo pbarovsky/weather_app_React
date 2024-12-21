@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import Button from "./Button";
-import SearchInput from "./SearchInput";
-import { AppContext } from "../context/AppContext";
-import { WeatherContext } from "../context/WeatherContext";
-import sc from "./SavedCitiesBlock.module.css";
 
-import DELETE_ICON from '../assets/icons/regular/delete.svg'
+import { AppContext } from "../../context/AppContext";
+import { WeatherContext } from "../../context/WeatherContext";
 
-const SavedCitiesBlock = () => {
+import SearchBar from '../molecules/SearchBar';
+import Button from "../atoms/Button";
+import sc from './SavedCitiesSection.module.css';
+
+import DELETE_ICON from '../../assets/icons/regular/delete.svg'
+
+
+const SavedCitiesSection = () => {
   const { favorites, removeFromFavorites } = useContext(AppContext);
   const { getWeatherByCity } = useContext(WeatherContext);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredSavedCitiesBlock, setFilteredSavedCitiesBlock] =
-    useState(favorites);
+  const [filteredSavedCitiesBlock, setFilteredSavedCitiesBlock] = useState(favorites);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -24,14 +26,15 @@ const SavedCitiesBlock = () => {
     return () => clearTimeout(timeoutId);
   }, [searchTerm, favorites]);
 
+
   return (
-    <section className={sc.SavedCitiesBlock_card}>
-      <SearchInput
-        onSubmit={(e) => e.preventDefault()}
+    <section className={sc.SavedCities_card}>
+      <SearchBar
         value={searchTerm}
         onChange={setSearchTerm}
-        className={sc.city_input}
+        onSubmit={(e) => e.preventDefault()}
         placeholder="Поиск в сохранённых..."
+        className={sc.city_input}
       />
       <ul>
         {filteredSavedCitiesBlock.map((city) => (
@@ -54,4 +57,4 @@ const SavedCitiesBlock = () => {
   );
 };
 
-export default SavedCitiesBlock;
+export default SavedCitiesSection

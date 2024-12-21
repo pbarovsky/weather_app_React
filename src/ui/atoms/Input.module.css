@@ -1,21 +1,9 @@
-/* .form {
-  display: flex;
-  align-items: center;
-  background-color: #F4F7FC;
-  border-radius: 30px;
-  padding: 2px 10px;
-  color: #4D65AC;
-} */
-
 .input {
   display: flex;
   align-items: center;
   border-radius: 30px;
   padding: 15px 15px;
-
-  /* flex: 1; */
   border: none;
-  /* padding: 10px; */
   font-size: 16px;
   outline: none;
   color: #4D65AC;

@@ -45,11 +45,3 @@
   justify-content: flex-start;
   gap: 20px;
 }
-
-.set_action {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-  gap: 20px;
-}
