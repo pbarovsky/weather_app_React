@@ -22,21 +22,6 @@
   scroll-behavior: smooth;
 }
 
-.detail_item { 
-  display: flex; 
-  align-items: center;
-  width: auto; 
-  gap: 10px; 
-  margin: 0; 
-  padding: 10px; 
-  /* border: 1px solid #ccc;  */
-  border-radius: 10px;
-  flex-shrink: 0; 
-  white-space: nowrap;
-  user-select: none;
-  background: #F6F9FE;
-}
-
 .scroll_button {
   color: rgb(0, 0, 0);
   font-size: 30px;
@@ -47,9 +32,6 @@
   width: 50px;
   height: 50px;
 }
-
-
-
 
 
 @media (max-width: 1220px) {
@@ -78,10 +60,6 @@
     flex-direction: column;
   }
 
-  .detail_item {
-    min-width: 285px;
-  }
-
   .rotate_top {
     transform: rotate(-90deg);
   }
@@ -101,10 +79,6 @@
     width: 500px;
     align-items: center;
   }
-
-  .detail_item {
-    min-width: 460px;
-  }
 }
 
 @media (max-width: 520px) {
@@ -115,10 +89,6 @@
   .details_card {
     width: 400px;
   }
-
-  .detail_item {
-    min-width: 360px;
-  }
 }
 
 @media (max-width: 420px) {
@@ -128,9 +98,5 @@
 
   .details_card {
     width: 300px;
-  }
-
-  .detail_item {
-    min-width: 260px;
   }
 }

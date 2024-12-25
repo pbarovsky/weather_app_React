@@ -5,11 +5,8 @@ import { DetailsIcons as icon } from "../../constants/DetailsIcons";
 import LoadingErrorState from "../molecules/LoadingErrorState";
 import { formatTime } from '../../helpers/formatTime'
 import Button from "../atoms/Button";
+import DetailItem from "../atoms/DetailItem";
 import sc from "./DetailsSection.module.css";
-
-const DetailItem = ({ label, value, icon }) => (
-  <p className={sc.detail_item}>{icon} {label}: {value}</p>
-);
 
 const DetailsSection = () => {
   const { weatherData, loading, error } = useContext(WeatherContext);

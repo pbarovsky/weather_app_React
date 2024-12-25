@@ -13,7 +13,7 @@
   gap: 15px;
 }
 
-.SavedCities_card ul {
+.saved_city__list {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -25,37 +25,15 @@
   gap: 15px;
 }
 
-.SavedCities_card li {
-  padding: 5px 15px;
-  margin: 0px;
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-
-  width: 260px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.del_btn {
-  width: 25px;
-  height: 25px;
-  stroke: #fff;
-}
-
 .city_input {
   border: none;
   font-size: 16px;
   border-radius: 20px;
   outline: none;
-  color: #4D65AC;
-  background-color: #F4F7FC;
+  color: #4d65ac;
+  background-color: #f4f7fc;
   width: 260px;
-} 
+}
 
 @media (max-width: 1220px) {
   .SavedCities_card {
@@ -78,10 +56,6 @@
     margin: 0 auto;
   }
 
-  .SavedCities_card li {
-    width: 460px;
-  }
-
   .city_input {
     width: 460px;
   }
@@ -93,10 +67,6 @@
     min-height: 200px;
   }
 
-  .SavedCities_card li {
-    width: 360px;
-  }
-
   .city_input {
     width: 360px;
   }
@@ -106,10 +76,6 @@
   .SavedCities_card {
     width: 300px;
     min-height: 200px;
-  }
-
-  .SavedCities_card li {
-    width: 260px;
   }
 
   .city_input {

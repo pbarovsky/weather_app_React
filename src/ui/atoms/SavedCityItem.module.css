@@ -1,0 +1,33 @@
+.saved_city_item {
+  padding: 5px 15px;
+  margin: 0px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  width: 260px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+@media (max-width: 690px) {
+  .saved_city_item {
+    width: 460px;
+  }
+}
+
+@media (max-width: 520px) {
+  .saved_city_item {
+    width: 360px;
+  }
+}
+
+@media (max-width: 420px) {
+  .saved_city_item {
+    width: 260px;
+  }
+}
