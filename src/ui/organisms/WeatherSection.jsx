@@ -23,13 +23,6 @@ const WeatherSection = () => {
 
   return (
     <section className={sc.weather_card} style={{ backgroundColor: cardColor }}>
-      <div className={sc.desc}>
-        <p className={sc.city}>{name}</p>
-        <p className={sc.country}>{sys.country}</p>
-        <p className={sc.coord}>
-          {coord.lat.toFixed(3)}, {coord.lon.toFixed(3)}
-        </p>
-      </div>
       <img
         className={sc.fav}
         src={isFavorite(name) ? FAVORITE_ACTIVE_ICON : FAVORITE_ICON}
@@ -46,6 +39,13 @@ const WeatherSection = () => {
             {weatherData.weather[0].description}
           </p>
         </div>
+      </div>
+      <div className={sc.desc}>
+        <p className={sc.city}>{name}</p>
+        <p className={sc.country}>{sys.country}</p>
+        <p className={sc.coord}>
+          {coord.lat.toFixed(3)}, {coord.lon.toFixed(3)}
+        </p>
       </div>
     </section>
   );

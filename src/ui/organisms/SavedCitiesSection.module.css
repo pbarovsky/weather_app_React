@@ -1,7 +1,7 @@
 .SavedCities_card {
   border: 1px solid #ccc;
   width: 300px;
-  min-height: 300px;
+  min-height: 410px;
   border-radius: 15px;
   padding: 10px 20px;
 
@@ -38,7 +38,7 @@
 
   width: 260px;
   border: 1px solid #ccc;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .del_btn {
@@ -57,23 +57,25 @@
   width: 260px;
 } 
 
-@media (max-width: 1120px) {
+@media (max-width: 1220px) {
   .SavedCities_card {
     min-height: 300px;
     align-self: flex-start;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 840px) {
   .SavedCities_card {
     min-height: 420px;
+    width: 325px;
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 690px) {
   .SavedCities_card {
     width: 500px;
     min-height: 200px;
+    margin: 0 auto;
   }
 
   .SavedCities_card li {

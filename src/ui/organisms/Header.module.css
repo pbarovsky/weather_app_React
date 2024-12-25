@@ -1,6 +1,6 @@
 .header {
   margin: 0 auto;
-  width: 1085px;
+  width: 1175px;
   border: 1px solid #ccc;
   padding: 15px 20px;
   gap: 30px;
@@ -10,7 +10,10 @@
   justify-content: space-between;
   margin: 50px auto;
   border-radius: 15px;
+}
 
+.header__title {
+  font-weight: normal;
 }
 
 .header__input {
@@ -44,9 +47,9 @@
   justify-content: space-between;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1220px) {
   .header {
-    width: 730px;
+    width: 830px;
   }
 
   .actions {
@@ -58,9 +61,9 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 840px) {
   .header {
-    width: 655px;
+    width: 675px;
     gap: 10px;
   }
 
@@ -72,7 +75,7 @@
     width: 260px;  }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 690px) {
   .header {
     margin: 30px auto;
     width: 500px;

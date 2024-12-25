@@ -23,7 +23,7 @@ const Header = ({ isSettingsOpen, toggleSettings }) => {
 
   return (
     <header className={sc.header}>
-      <h1>МояПогода</h1>
+      <h1 className={sc.header__title}><b>Моя</b>Погода</h1>
       <div className={sc.actions}>
         <div className={sc.input__actions}>
           <SearchBar

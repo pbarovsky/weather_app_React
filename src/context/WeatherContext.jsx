@@ -54,6 +54,7 @@ export const WeatherProvider = ({ children }) => {
   // Автоматическое получение погоды по геолокации
   useEffect(() => {
     const fetchInitialWeather = async () => {
+      console.log("Coordinates");
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           async ({ coords }) => {
@@ -73,7 +74,7 @@ export const WeatherProvider = ({ children }) => {
     };
 
     fetchInitialWeather();
-  }, [getWeatherByCoords]);
+  }, []);
 
   return (
     <WeatherContext.Provider
