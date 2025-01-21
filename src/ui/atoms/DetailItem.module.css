@@ -9,7 +9,7 @@
   flex-shrink: 0; 
   white-space: nowrap;
   user-select: none;
-  background: #F6F9FE;
+  background: #F4F7FC;
 }
 
 @media (max-width: 840px) {

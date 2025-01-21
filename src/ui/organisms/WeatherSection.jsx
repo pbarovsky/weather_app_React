@@ -25,31 +25,48 @@ export const WeatherSection = () => {
   const { icon, cardColor } = getWeatherAssets(weatherData);
 
   return (
-    <section className={sc.weather_card} style={{ backgroundColor: cardColor }}>
+    <section 
+    className="
+    flex flex-col items-center gap-[60px] w-[300px] h-[400px] justify-start rounded-[15px] relative
+    sl:w-[500px] sl:h-[300px]
+    md:w-[325px] md:h-[420px] md:justify-center md:gap-[70px]
+    lg:w-[525px] lg:py-[10px] lg:mx-[20px]
+    xl:w-[845px] xl:h-[300px] xl:px-[50px] xl:py-[10px] xl:flex-row xl:justify-between 
+    " 
+    style={{ backgroundColor: cardColor }}>
       <img
-        className={sc.fav}
+        className="absolute top-[2%] right-[2%] cursor-pointer"
         src={isFavorite(name) ? FAVORITE_ACTIVE_ICON : FAVORITE_ICON}
         alt="Favorite"
         onClick={() => toggleFavorite(weatherData)}
       />
       <div className={sc.about}>
-        <img src={icon} alt="Weather" className={sc.image_weather} />
-        <div className={sc.temp_container}>
-          <p className={sc.temp}>
+        <img src={icon} alt="Weather" className="w-[120px] h-[120px] sl:w-[150px] sl:h-[150px] md:w-[200px] md:h-[200px]" />
+        <div className="flex items-center justify-center text-center gap-0 flex-col">
+        <p className="text-[80px] text-white font-bold">
             {Math.round(main.temp)} <span>°C</span>
           </p>
-          <p className={sc.weather_type}>
+          <p className="text-black font-light text-[18px]">
             {weatherData.weather[0].description}
           </p>
         </div>
       </div>
-      <div className={sc.desc}>
-        <p className={sc.city}>{name}</p>
-        <p className={sc.country}>{sys.country}</p>
-        <p className={sc.coord}>
+      <div className="
+        flex flex-col justify-start items-center
+        sm:order-[-1]">
+        <p className="font-bold text-[24px]">{name}</p>
+        <p className="text-[16px]">{sys.country}</p>
+        <p className="text-[16px]">
           {coord.lat.toFixed(3)}, {coord.lon.toFixed(3)}
         </p>
       </div>
     </section>
   );
 };
+
+
+
+
+
+
+

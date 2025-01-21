@@ -5,6 +5,7 @@ import { Header } from "./ui/organisms/Header";
 import { WeatherSection } from "./ui/organisms/WeatherSection";
 import { DetailsSection } from "./ui/organisms/DetailsSection";
 import { SavedCitiesSection } from "./ui/organisms/SavedCitiesSection";
+import { Container } from "./ui/atoms/Container";
 import "./App.css";
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <AppProvider>
       <WeatherProvider>
-        <div className="App">
+        
           <Header
             isSettingsOpen={isSettingsOpen}
             toggleSettings={toggleSettings}
@@ -27,7 +28,7 @@ const App = () => {
             </main>
             <SavedCitiesSection className="SavedCitiesBlock" />
           </div>
-        </div>
+        
       </WeatherProvider>
     </AppProvider>
   );

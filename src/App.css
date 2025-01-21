@@ -1,44 +1,3 @@
-/* .flexer-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: space-between;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin: 50px auto;
-}
-
-.main {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  align-self: flex-start;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 1220px) {
-  .main {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 560px) {
-  .main {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-} */
-
-
-
-
-
-
-
 .flexer-container {
   display: flex;
   flex-direction: row;
@@ -59,7 +18,7 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1235px) {
   .main {
     flex-direction: row;
     align-items: center;

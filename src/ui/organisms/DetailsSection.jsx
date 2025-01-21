@@ -107,16 +107,24 @@ export const DetailsSection = () => {
     }
   };
 
+
+
   return (
-    <div className={sc.details_wrapper}>
+    <div className="
+    flex flex-col items-center gap-[5px] border border-ccc border-solid py-[15px] px-[20px] rounded-[15px] w-[300px]
+    xl:flex-row xl:border-none xl:w-[845px]
+    ">
       <Button
-        className={`${sc.scroll_button} ${sc["scroll_button"]}`}
+        className="text-black text-[30px] border-none p-[10px] cursor-pointer z-[1] w-[50px] h-[50px]"
         onClick={scrollLeftFunc}
       >
-        <i className={`bi bi-chevron-compact-left ${sc.rotate_bot}`}></i>
+        <i className={`bi bi-chevron-compact-left rotate-90 lg:rotate-0`}></i>
       </Button>
       <section
-        className={sc.details_card}
+        className="
+        w-[300px] h-[320px] flex flex-col gap-[20px] py-[10px] px-0 items-center overflow-hidden relative scroll-smooth
+        xl:flex-row xl:h-[80px] xl:w-[725px]
+        "
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
@@ -179,10 +187,10 @@ export const DetailsSection = () => {
         )}
       </section>
       <Button
-        className={`${sc.scroll_button} ${sc["scroll_button"]}`}
+        className="text-black text-[30px] border-none p-[10px] cursor-pointer z-[1] w-[50px] h-[50px]"
         onClick={scrollRightFunc}
       >
-        <i className={`bi bi-chevron-compact-right ${sc.rotate_bot}`}></i>
+        <i className={`bi bi-chevron-compact-right rotate-90 lg:rotate-0`}></i>
       </Button>
     </div>
   );
