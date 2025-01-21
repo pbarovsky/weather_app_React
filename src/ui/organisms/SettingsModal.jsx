@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import SettingOption from '../molecules/SettingsOption';
-import Button from '../atoms/Button';
+import { SettingOption } from "../molecules/SettingsOption";
+import { Button } from "../atoms/Button";
 import { AppContext } from "../../context/AppContext";
 import { createPortal } from "react-dom";
-import sc from './SettingsModal.module.css';
-
+import sc from "./SettingsModal.module.css";
 import DELETE_ICON from "../../assets/icons/regular/delete.svg";
 
-const SettingsModal = ({ onClose }) => {
+export const SettingsModal = ({ onClose }) => {
   const { settings, updateSetting } = useContext(AppContext);
 
   const options = [
@@ -41,5 +40,3 @@ const SettingsModal = ({ onClose }) => {
     document.getElementById("modal")
   );
 };
-
-export default SettingsModal;

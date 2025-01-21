@@ -1,6 +1,6 @@
-import Input from "../atoms/Input";
+import { Input } from "../atoms/Input";
 
-const SearchBar = ({
+export const SearchBar = ({
   value,
   onChange,
   onSubmit,
@@ -21,5 +21,3 @@ const SearchBar = ({
     </form>
   );
 };
-
-export default SearchBar;

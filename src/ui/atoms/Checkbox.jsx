@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 import sc from "./Checkbox.module.css";
 
-const Checkbox = ({ checked, onChange, className = "" }) => {
+export const Checkbox = ({ checked, onChange, className = "" }) => {
   const [isChecked, setIsChecked] = useState(checked);
 
   const handleToggle = () => {
@@ -11,9 +11,11 @@ const Checkbox = ({ checked, onChange, className = "" }) => {
 
   return (
     <div className={`${sc.togglerWrapper} ${className}`} onClick={handleToggle}>
-      <i className={`bi ${isChecked ? 'bi-toggle-on' : 'bi-toggle-off'} ${sc.toggleIcon}`}></i>
+      <i
+        className={`bi ${isChecked ? "bi-toggle-on" : "bi-toggle-off"} ${
+          sc.toggleIcon
+        }`}
+      ></i>
     </div>
   );
 };
-
-export default Checkbox;

@@ -1,20 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
-import LoadingErrorState from "../molecules/LoadingErrorState";
+import { LoadingErrorState } from "../molecules/LoadingErrorState";
 import { WeatherContext } from "../../context/WeatherContext";
 import { AppContext } from "../../context/AppContext";
 import { getWeatherAssets } from "../../helpers/getWeatherAssets";
 import sc from "./WeatherSection.module.css";
-
 import FAVORITE_ICON from "../../assets/icons/regular/favorite.svg";
 import FAVORITE_ACTIVE_ICON from "../../assets/icons/regular/favorite_active.svg";
 
-const WeatherSection = () => {
+export const WeatherSection = () => {
   const { weatherData, loading, error } = useContext(WeatherContext);
   const { toggleFavorite, isFavorite } = useContext(AppContext);
 
   if (loading || error || !weatherData) {
     return (
-      <LoadingErrorState loading={loading} error={error} weatherData={weatherData}/>
+      <LoadingErrorState
+        loading={loading}
+        error={error}
+        weatherData={weatherData}
+      />
     );
   }
 
@@ -50,5 +53,3 @@ const WeatherSection = () => {
     </section>
   );
 };
-
-export default WeatherSection;

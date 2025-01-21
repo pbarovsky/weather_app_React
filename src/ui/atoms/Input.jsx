@@ -1,6 +1,6 @@
 import sc from './Input.module.css';
 
-const Input = ({ value, onChange, placeholder = "", className = "" }) => {
+export const Input = ({ value, onChange, placeholder = "", className = "" }) => {
   return (
     <input
       className={`${sc.input} ${className}`}
@@ -11,5 +11,3 @@ const Input = ({ value, onChange, placeholder = "", className = "" }) => {
     />
   );
 };
-
-export default Input;

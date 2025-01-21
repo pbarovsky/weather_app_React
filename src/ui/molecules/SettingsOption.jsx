@@ -1,7 +1,7 @@
-import Checkbox from '../atoms/Checkbox';
-import sc from './SettingsOption.module.css';
+import { Checkbox } from "../atoms/Checkbox";
+import sc from "./SettingsOption.module.css";
 
-const SettingOption = ({ label, checked, onChange }) => {
+export const SettingOption = ({ label, checked, onChange }) => {
   return (
     <div className={sc.settings}>
       <p>{label}</p>
@@ -9,5 +9,3 @@ const SettingOption = ({ label, checked, onChange }) => {
     </div>
   );
 };
-
-export default SettingOption;

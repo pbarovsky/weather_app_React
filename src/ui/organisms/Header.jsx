@@ -1,17 +1,14 @@
 import React, { useState, useContext } from "react";
-
-import SearchBar from "../molecules/SearchBar";
-import Button from "../atoms/Button";
-import sc from "./Header.module.css";
-import SettingsModal from "./SettingsModal";
-
+import { SearchBar } from "../molecules/SearchBar";
+import { Button } from "../atoms/Button";
+import { SettingsModal } from "./SettingsModal";
 import { WeatherContext } from "../../context/WeatherContext";
 import { formatSearch } from "../../helpers/formatSearch";
-
+import sc from "./Header.module.css";
 import SEARCH_ICON from "../../assets/icons/regular/search.svg";
 import SETTINGS_ICON from "../../assets/icons/regular/settings.svg";
 
-const Header = ({ isSettingsOpen, toggleSettings }) => {
+export const Header = ({ isSettingsOpen, toggleSettings }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { getWeatherByCity, getWeatherByCoords } = useContext(WeatherContext);
 
@@ -23,7 +20,9 @@ const Header = ({ isSettingsOpen, toggleSettings }) => {
 
   return (
     <header className={sc.header}>
-      <h1 className={sc.header__title}><b>Моя</b>Погода</h1>
+      <h1 className={sc.header__title}>
+        <b>Моя</b>Погода
+      </h1>
       <div className={sc.actions}>
         <div className={sc.input__actions}>
           <SearchBar
@@ -47,5 +46,3 @@ const Header = ({ isSettingsOpen, toggleSettings }) => {
     </header>
   );
 };
-
-export default Header;

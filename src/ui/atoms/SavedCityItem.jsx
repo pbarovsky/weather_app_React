@@ -1,8 +1,8 @@
-import Button from "./Button";
+import { Button } from "./Button";
 import DELETE_ICON from "../../assets/icons/regular/delete.svg";
 import sc from "./SavedCityItem.module.css";
 
-const SavedCityItem = ({ city, onCityClick, onCityDelete }) => (
+export const SavedCityItem = ({ city, onCityClick, onCityDelete }) => (
   <li className={sc.saved_city_item}>
     <p className={sc.city_name} onClick={onCityClick}>
       {city.name}, {city.sys.country}
@@ -12,5 +12,3 @@ const SavedCityItem = ({ city, onCityClick, onCityDelete }) => (
     </Button>
   </li>
 );
-
-export default SavedCityItem;

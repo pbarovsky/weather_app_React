@@ -61,7 +61,7 @@ export const WeatherProvider = ({ children }) => {
     initialFetchDone.current = true;
 
     if (navigator.geolocation) {
-      console.log('render')
+      // console.log('render')
       navigator.geolocation.getCurrentPosition(
         async ({ coords }) => {
           try {

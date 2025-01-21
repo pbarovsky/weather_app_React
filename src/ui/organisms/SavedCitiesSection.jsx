@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { WeatherContext } from "../../context/WeatherContext";
-import SavedCityItem from "../atoms/SavedCityItem";
-import SearchBar from "../molecules/SearchBar";
+import { SavedCityItem } from "../atoms/SavedCityItem";
+import { SearchBar } from "../molecules/SearchBar";
 import sc from "./SavedCitiesSection.module.css";
 
-const SavedCitiesSection = () => {
+export const SavedCitiesSection = () => {
   const { favorites, toggleFavorite } = useContext(AppContext);
   const { getWeatherByCity } = useContext(WeatherContext);
   const [searchTerm, setSearchTerm] = useState("");
@@ -46,5 +46,3 @@ const SavedCitiesSection = () => {
     </section>
   );
 };
-
-export default SavedCitiesSection;
