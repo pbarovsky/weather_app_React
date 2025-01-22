@@ -2,30 +2,36 @@ import React, { useContext, useRef, useState, useEffect } from "react";
 import { WeatherContext } from "../../context/WeatherContext";
 import { AppContext } from "../../context/AppContext";
 import { DetailsIcons as icon } from "../../constants/DetailsIcons";
+import { ButtonScroll } from "../molecules/ButtonScroll";
 import { LoadingErrorState } from "../molecules/LoadingErrorState";
 import { formatTime } from "../../helpers/formatTime";
-import { Button } from "../atoms/Button";
 import { DetailItem } from "../atoms/DetailItem";
-import sc from "./DetailsSection.module.css";
 
 export const DetailsSection = () => {
   const { weatherData, loading, error } = useContext(WeatherContext);
   const { settings } = useContext(AppContext);
   const containerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollStart, setScrollStart] = useState(0);
-  const [vertical, setVertical] = useState(false);
+  const [isVertical, setIsVertical] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setVertical(window.innerWidth <= 840);
+      setIsVertical(window.innerWidth <= 1023);
     };
 
-    handleResize(); // Проверка при монтировании
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const scroll = (direction) => {
+    if (containerRef.current) {
+      const scrollOptions = isVertical
+        ? { top: direction === "left" ? -530 : 530, behavior: "smooth" }
+        : { left: direction === "left" ? -530 : 530, behavior: "smooth" };
+
+      containerRef.current.scrollBy(scrollOptions);
+    }
+  };
 
   if (loading || error || !weatherData) {
     return (
@@ -39,159 +45,50 @@ export const DetailsSection = () => {
 
   const { main, wind, visibility, clouds, sys } = weatherData;
 
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(
-      vertical
-        ? e.pageY - containerRef.current.offsetTop
-        : e.pageX - containerRef.current.offsetLeft
-    );
-    setScrollStart(
-      vertical
-        ? containerRef.current.scrollTop
-        : containerRef.current.scrollLeft
-    );
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) {
-      setIsDragging(false);
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const pos = vertical
-      ? e.pageY - containerRef.current.offsetTop
-      : e.pageX - containerRef.current.offsetLeft;
-    const walk = (pos - startX) * 2; // Увеличиваем скорость прокрутки
-    if (vertical) {
-      containerRef.current.scrollTop = scrollStart - walk;
-    } else {
-      containerRef.current.scrollLeft = scrollStart - walk;
-    }
-  };
-
-  const handleWheel = (e) => {
-    if (containerRef.current) {
-      if (vertical) {
-        containerRef.current.scrollTop += e.deltaY * 2; // Увеличиваем скорость прокрутки колесиком мыши
-      } else {
-        containerRef.current.scrollLeft += e.deltaY * 2;
-      }
-    }
-  };
-
-  const scrollLeftFunc = () => {
-    if (containerRef.current) {
-      if (vertical) {
-        containerRef.current.scrollBy({ top: -230, behavior: "smooth" });
-      } else {
-        containerRef.current.scrollBy({ left: -230, behavior: "smooth" });
-      }
-    }
-  };
-
-  const scrollRightFunc = () => {
-    if (containerRef.current) {
-      if (vertical) {
-        containerRef.current.scrollBy({ top: 230, behavior: "smooth" });
-      } else {
-        containerRef.current.scrollBy({ left: 230, behavior: "smooth" });
-      }
-    }
-  };
-
-
+  const details = [
+    { label: "Ощущается как", value: `${Math.round(main.feels_like)} °C`, icon: icon.thermometer },
+    { label: "MIN температура", value: `${Math.round(main.temp_min)} °C`, icon: icon.thermometerLow },
+    { label: "MAX температура", value: `${Math.round(main.temp_max)} °C`, icon: icon.thermometerHigh },
+    { label: "Влажность", value: `${main.humidity} %`, icon: icon.moisture },
+    { label: "Скорость ветра", value: `${wind.speed} м/с`, icon: icon.wind },
+    settings.visibility && { label: "Видимость", value: `${visibility / 1000} км`, icon: icon.eye },
+    settings.clouds && { label: "Облачность", value: `${clouds.all} %`, icon: icon.cloudy },
+    settings.sunset && { label: "Закат", value: formatTime(sys.sunset), icon: icon.sunset },
+    settings.sunrise && { label: "Восход", value: formatTime(sys.sunrise), icon: icon.sunrise },
+  ].filter(Boolean);
 
   return (
-    <div className="
+    <div
+      className="
     flex flex-col items-center gap-[5px] border border-ccc border-solid py-[15px] px-[20px] rounded-[15px] w-[300px]
+    md:w-[300px]
+    sl:w-[500px]
+    sm:w-[400px]
     xl:flex-row xl:border-none xl:w-[845px]
-    ">
-      <Button
-        className="text-black text-[30px] border-none p-[10px] cursor-pointer z-[1] w-[50px] h-[50px]"
-        onClick={scrollLeftFunc}
-      >
-        <i className={`bi bi-chevron-compact-left rotate-90 lg:rotate-0`}></i>
-      </Button>
+    lg:flex-row lg:h-[80px] lg:w-[490px] lg:border-none
+    "
+    >
+      <ButtonScroll onClick={() => scroll("left")} direction="left"/>
       <section
         className="
-        w-[300px] h-[320px] flex flex-col gap-[20px] py-[10px] px-0 items-center overflow-hidden relative scroll-smooth
+        w-full h-[320px] flex flex-col gap-[20px] py-[10px] px-0 items-center overflow-hidden relative scroll-smooth
         xl:flex-row xl:h-[80px] xl:w-[725px]
+        lg:flex-row lg:h-[80px] lg:w-[470px]
         "
         ref={containerRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-        onWheel={handleWheel}
+        onWheel={(e) => {
+          const scrollOptions = isVertical
+            ? { top: e.deltaY, behavior: "smooth" }
+            : { left: e.deltaY, behavior: "smooth" };
+
+          containerRef.current.scrollBy(scrollOptions);
+        }}
       >
-        <DetailItem
-          label="Ощущается как"
-          value={`${Math.round(main.feels_like)} °C`}
-          icon={icon.thermometer}
-        />
-        <DetailItem
-          label="MIN температура"
-          value={`${Math.round(main.temp_min)} °C`}
-          icon={icon.thermometerLow}
-        />
-        <DetailItem
-          label="MAX температура"
-          value={`${Math.round(main.temp_max)} °C`}
-          icon={icon.thermometerHigh}
-        />
-        <DetailItem
-          label="Влажность"
-          value={`${main.humidity} %`}
-          icon={icon.moisture}
-        />
-        <DetailItem
-          label="Скорость ветра"
-          value={`${wind.speed} м/с`}
-          icon={icon.wind}
-        />
-        {settings.visibility && (
-          <DetailItem
-            label="Видимость"
-            value={`${visibility / 1000} км`}
-            icon={icon.eye}
-          />
-        )}
-        {settings.clouds && (
-          <DetailItem
-            label="Облачность"
-            value={`${clouds.all} %`}
-            icon={icon.cloudy}
-          />
-        )}
-        {settings.sunset && (
-          <DetailItem
-            label="Закат"
-            value={formatTime(sys.sunset)}
-            icon={icon.sunset}
-          />
-        )}
-        {settings.sunrise && (
-          <DetailItem
-            label="Восход"
-            value={formatTime(sys.sunrise)}
-            icon={icon.sunrise}
-          />
-        )}
+        {details.map(({ label, value, icon }, index) => (
+          <DetailItem key={index} label={label} value={value} icon={icon} />
+        ))}
       </section>
-      <Button
-        className="text-black text-[30px] border-none p-[10px] cursor-pointer z-[1] w-[50px] h-[50px]"
-        onClick={scrollRightFunc}
-      >
-        <i className={`bi bi-chevron-compact-right rotate-90 lg:rotate-0`}></i>
-      </Button>
+      <ButtonScroll onClick={() => scroll("right")} direction="right" />
     </div>
   );
 };

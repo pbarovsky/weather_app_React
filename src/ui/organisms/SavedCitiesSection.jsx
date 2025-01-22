@@ -3,7 +3,6 @@ import { AppContext } from "../../context/AppContext";
 import { WeatherContext } from "../../context/WeatherContext";
 import { SavedCityItem } from "../atoms/SavedCityItem";
 import { SearchBar } from "../molecules/SearchBar";
-import sc from "./SavedCitiesSection.module.css";
 
 export const SavedCitiesSection = () => {
   const { favorites, toggleFavorite } = useContext(AppContext);
@@ -22,15 +21,23 @@ export const SavedCitiesSection = () => {
   }, [searchTerm, favorites]);
 
   return (
-    <section className={sc.SavedCities_card}>
+    <section
+      className="
+    flex flex-col border border-solid border-ccc rounded-[15px] py-[10px] px-[20px] items-start self-start gap-[15px] min-h-[200px] w-[300px]
+    sm:w-[400px]
+    sl:w-[500px]
+    md:w-[340px]
+    lg:w-[300px] lg:min-h-[410px]
+    "
+    >
       <SearchBar
         value={searchTerm}
         onChange={(value) => setSearchTerm(value)}
         onSubmit={(e) => e.preventDefault()}
         placeholder="Поиск в сохранённых..."
-        className={sc.city_input}
+        className="w-full"
       />
-      <ul className={sc.saved_city__list}>
+      <ul className="list-none flex flex-col justify-between items-center gap-[15px] w-full">
         {filteredSavedCities.map((city) => (
           <SavedCityItem
             key={city.id}

@@ -1,9 +1,8 @@
 import { Checkbox } from "../atoms/Checkbox";
-import sc from "./SettingsOption.module.css";
 
 export const SettingOption = ({ label, checked, onChange }) => {
   return (
-    <div className={sc.settings}>
+    <div className="flex items-center justify-between flex-row-reverse gap-[20px]">
       <p>{label}</p>
       <Checkbox checked={checked} onChange={onChange} />
     </div>

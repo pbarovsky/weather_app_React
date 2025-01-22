@@ -1,7 +1,0 @@
-.settings {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-  gap: 20px;
-}

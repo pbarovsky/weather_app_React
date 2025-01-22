@@ -1,9 +1,0 @@
-.togglerWrapper {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.toggleIcon {
-  font-size: 40px;
-}

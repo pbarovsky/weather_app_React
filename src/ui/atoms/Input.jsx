@@ -1,21 +1,9 @@
-// import sc from './Input.module.css';
-
-// export const Input = ({ value, onChange, placeholder = "", className = "" }) => {
-//   return (
-//     <input
-//       className={`${sc.input} ${className}`}
-//       type="text"
-//       value={value}
-//       onChange={(e) => onChange(e.target.value)}
-//       placeholder={placeholder}
-//     />
-//   );
-// };
-
-
-
-
-export const Input = ({ value, onChange, placeholder = "", className = "" }) => {
+export const Input = ({
+  value,
+  onChange,
+  placeholder = "",
+  className = "",
+}) => {
   return (
     <input
       className={`flex items-center rounded-[30px] p-[15px] border-none text-[16px] bg-blue-gray text-black focus:border-none outline-none w-full ${className}`}

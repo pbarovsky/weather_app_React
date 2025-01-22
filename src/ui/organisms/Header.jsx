@@ -80,21 +80,19 @@ export const Header = ({ isSettingsOpen, toggleSettings }) => {
   return (
     <header 
     className="
-    mb-0 w-[300px] mt-[30px] ml-auto border border-solid border-ccc gap-[5px] flex flex-col items-center justify-between rounded-[15px] px-[15px] py-[20px]
+    mb-0 w-[300px] mt-[30px] mx-auto border border-solid border-ccc gap-[5px] flex flex-col items-center justify-between rounded-[15px] px-[15px] py-[20px]
+    sm:w-[400px]
     sl:w-[500px]
-    md:w-[690px] md:flex-row
-    lg:w-[1024px]
-    xl:w-[1200px] xl:gap-[30px]
+    md:w-[670px] md:flex-row
+    lg:w-[820px]
+    xl:w-[1180px]
     ">
       <h1 className="font-normal text-[32px]">
         <b>Моя</b>Погода
       </h1>
       <div className="
         flex flex-row items-center justify-between gap-[5px] w-full
-        sl:max-w-[700px] sl:justify-between
         md:justify-end
-        lg:gap-[10px] lg:max-w-[700px] lg:justify-end
-        xl:gap-[30px] xl:max-w-[700px] xl:justify-end
       ">
         <div className="flex gap-[5px] flex-row items-center justify-between">
           <SearchBar
@@ -103,7 +101,12 @@ export const Header = ({ isSettingsOpen, toggleSettings }) => {
             onSubmit={handleSearch}
             placeholder="Введите город или координаты..."
             className="flex flex-row items-center justify-between gap-[5px]"
-            classNameInput="w-[200px] sl:w-[260px] lg:w-[360px] xl:w-[460px]"
+            classNameInput="
+            w-[200px] 
+            sl:w-[260px] 
+            lg:w-[360px] 
+            xl:w-[460px]
+            "
           >
             <Button onClick={handleSearch}>
               <img src={SEARCH_ICON} alt="Search" />
