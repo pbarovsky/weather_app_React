@@ -1,30 +1,45 @@
-// App.jsx
-import React from "react";
-import Header from "./components/Header";
-import WeatherBlock from "./components/WeatherBlock";
-import DetailsBlock from "./components/DetailsBlock";
-import SavedCitiesBlock from "./components/SavedCitiesBlock";
+import React, { useState } from "react";
 import { WeatherProvider } from "./context/WeatherContext";
-import AppProvider from "./context/AppContext";
-import "./App.css";
+import { AppProvider } from "./context/AppContext";
+import { Header } from "./ui/organisms/Header";
+import { WeatherSection } from "./ui/organisms/WeatherSection";
+import { DetailsSection } from "./ui/organisms/DetailsSection";
+import { SavedCitiesSection } from "./ui/organisms/SavedCitiesSection";
 
-function App() {
+const App = () => {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const toggleSettings = () => setIsSettingsOpen((prev) => !prev);
+
   return (
     <AppProvider>
       <WeatherProvider>
-        <div className="App">
-          <Header />
-          <div className="flexer-container">
-            <main className="main">
-              <WeatherBlock />
-              <DetailsBlock />
-            </main>
-            <SavedCitiesBlock className="SavedCitiesBlock" />
-          </div>
+        <Header
+          isSettingsOpen={isSettingsOpen}
+          toggleSettings={toggleSettings}
+        />
+        <div
+          className="
+          flex flex-col justify-center items-center gap-[30px] my-[50px] mx-auto flex-wrap
+          lg:flex-row
+          xl:flex-row
+          "
+        >
+          <main
+            className="
+            flex flex-col gap-[30px] self-start flex-wrap
+            md:flex-row
+            lg:flex-col
+            "
+          >
+            <WeatherSection />
+            <DetailsSection />
+          </main>
+          <SavedCitiesSection />
         </div>
       </WeatherProvider>
     </AppProvider>
   );
-}
+};
 
 export default App;
