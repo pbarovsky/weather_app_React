@@ -26,8 +26,8 @@ export const DetailsSection = () => {
   const scroll = (direction) => {
     if (containerRef.current) {
       const scrollOptions = isVertical
-        ? { top: direction === "left" ? -530 : 530, behavior: "smooth" }
-        : { left: direction === "left" ? -530 : 530, behavior: "smooth" };
+        ? { top: direction === "left" ? -230 : 230, behavior: "smooth" }
+        : { left: direction === "left" ? -230 : 230, behavior: "smooth" };
 
       containerRef.current.scrollBy(scrollOptions);
     }
