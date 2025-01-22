@@ -51,6 +51,7 @@ This project is built with the following technologies:
 - **React**: A popular JavaScript library for building interactive user interfaces.
 - **Vite**: A fast build tool and development server for modern JavaScript applications.
 - **Tailwind CSS**: A utility-first CSS framework for quickly styling UI components.
+- **Bootstrap Icons**: A library of free, high-quality icons for enhancing the user interface.
 - **Axios**: A promise-based HTTP client used to fetch weather data from the API.
 - **OpenWeather API**: The source of all real-time weather information displayed in the app.
 
