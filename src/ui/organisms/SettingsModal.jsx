@@ -24,12 +24,12 @@ export const SettingsModal = ({ onClose }) => {
         transform translate-x-[-50%] translate-y-[-90%] shadow-custom
       "
       >
-        <header className="w-full flex items-center justify-between">
+        <div className="w-full flex items-center justify-between">
           <h2 className="font-bold text-[24px]">Настройки</h2>
           <Button onClick={onClose}>
             <img src={DELETE_ICON} alt="Close" />
           </Button>
-        </header>
+        </div>
         <div className="flex flex-col items-start justify-start gap-0">
           {options.map(({ label, key }) => (
             <SettingOption

@@ -1,14 +1,14 @@
 const iconClass = {
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: '10px 10px',
-  fontSize: '14px',
-  fontWeight: '500',
-  borderRadius: '50px',
-  backgroundColor: '#fff',
-  height: '34px',
-}
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "10px 10px",
+  fontSize: "14px",
+  fontWeight: "500",
+  borderRadius: "50px",
+  backgroundColor: "#fff",
+  height: "34px",
+};
 
 export const DetailsIcons = {
   thermometer: <i className="bi bi-thermometer" style={iconClass}></i>,

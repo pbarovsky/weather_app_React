@@ -12,26 +12,39 @@ export const getWeatherAssets = (weatherData) => {
       color: isDay ? weatherColors.Clear_day : weatherColors.Clear_night,
     },
     Clouds: {
-      icon: weatherData.weather[0].description === "небольшая облачность"
-        ? weatherIcons.FewClouds
-        : weatherIcons.Clouds,
+      icon:
+        weatherData.weather[0].description === "небольшая облачность"
+          ? weatherIcons.FewClouds
+          : weatherIcons.Clouds,
       color: weatherColors.Clouds,
     },
     Rain: { icon: weatherIcons.Rain, color: weatherColors.Rain },
     Drizzle: { icon: weatherIcons.Rain, color: weatherColors.Rain },
     Snow: { icon: weatherIcons.Snow, color: weatherColors.Snow },
-    Thunderstorm: { icon: weatherIcons.Thunderstorm, color: weatherColors.Thunderstorm },
+    Thunderstorm: {
+      icon: weatherIcons.Thunderstorm,
+      color: weatherColors.Thunderstorm,
+    },
     Mist: { icon: weatherIcons.Mist, color: weatherColors.Mist },
   };
 
   const mistConditions = [
-    "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Ash", "Squall", "Tornado",
+    "Mist",
+    "Smoke",
+    "Haze",
+    "Dust",
+    "Fog",
+    "Sand",
+    "Ash",
+    "Squall",
+    "Tornado",
   ];
 
   if (mistConditions.includes(weatherCondition)) {
     return { icon: weatherIcons.Mist, cardColor: weatherColors.Mist };
   }
 
-  const { icon = "", color: cardColor = "" } = conditionGroups[weatherCondition] || {};
+  const { icon = "", color: cardColor = "" } =
+    conditionGroups[weatherCondition] || {};
   return { icon, cardColor };
 };

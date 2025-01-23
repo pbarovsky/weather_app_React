@@ -18,20 +18,8 @@ const App = () => {
           isSettingsOpen={isSettingsOpen}
           toggleSettings={toggleSettings}
         />
-        <div
-          className="
-          flex flex-col justify-center items-center gap-[30px] my-[50px] mx-auto flex-wrap
-          lg:flex-row
-          xl:flex-row
-          "
-        >
-          <main
-            className="
-            flex flex-col gap-[30px] self-start flex-wrap
-            md:flex-row
-            lg:flex-col
-            "
-          >
+        <div className="flex flex-col justify-center items-center gap-[30px] my-[50px] mx-auto flex-wrap lg:flex-row xl:flex-row">
+          <main className="flex flex-col gap-[30px] self-start flex-wrap md:flex-row lg:flex-col">
             <WeatherSection />
             <DetailsSection />
           </main>

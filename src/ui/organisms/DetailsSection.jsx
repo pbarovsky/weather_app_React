@@ -60,27 +60,21 @@ export const DetailsSection = () => {
   return (
     <div
       className="
-    flex flex-col items-center gap-[5px] border border-ccc border-solid py-[15px] px-[20px] rounded-[15px] w-[300px]
-    md:w-[300px]
-    sl:w-[500px]
-    sm:w-[400px]
-    xl:flex-row xl:border-none xl:w-[845px]
-    lg:flex-row lg:h-[80px] lg:w-[490px] lg:border-none
-    "
+      flex flex-col items-center gap-[5px] border border-ccc border-solid py-[15px] px-[20px] rounded-[15px] w-[300px]
+      md:w-[300px] sl:w-[500px] sm:w-[400px] xl:flex-row xl:border-none xl:w-[845px] lg:flex-row lg:h-[80px] lg:w-[490px] lg:border-none
+      "
     >
       <ButtonScroll onClick={() => scroll("left")} direction="left"/>
       <section
         className="
         w-full h-[320px] flex flex-col gap-[20px] py-[10px] px-0 items-center overflow-hidden relative scroll-smooth
-        xl:flex-row xl:h-[80px] xl:w-[725px]
-        lg:flex-row lg:h-[80px] lg:w-[470px]
+        xl:flex-row xl:h-[80px] xl:w-[725px] lg:flex-row lg:h-[80px] lg:w-[470px]
         "
         ref={containerRef}
         onWheel={(e) => {
           const scrollOptions = isVertical
             ? { top: e.deltaY, behavior: "smooth" }
             : { left: e.deltaY, behavior: "smooth" };
-
           containerRef.current.scrollBy(scrollOptions);
         }}
       >
