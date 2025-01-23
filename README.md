@@ -42,7 +42,7 @@ npm run dev
 
 ### 4. Open the App in Your Browser
 
-The development server will run on `http://localhost:5173`. Open this link in your web browser to view the app.
+The development server will run on `http://localhost:5173/CDG_task_3_weather/`. Open this link in your web browser to view the app.
 
 ## 🛠️ Technologies Used
 
