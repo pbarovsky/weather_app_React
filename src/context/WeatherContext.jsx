@@ -1,11 +1,17 @@
-import React, { createContext, useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import axios from "axios";
 
 export const WeatherContext = createContext();
 
-const API_KEY = "aae5541070e86f4526a7113a1f6692c2"; // Ваш API-ключ OpenWeatherMap
+const API_KEY = "aae5541070e86f4526a7113a1f6692c2";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
-const TIMEOUT = 8000; // Таймаут для запросов
+const TIMEOUT = 8000;
 
 const fetchWithTimeout = async (url, params, timeout = TIMEOUT) => {
   const controller = new AbortController();
@@ -37,7 +43,10 @@ export const WeatherProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchWithTimeout(BASE_URL, { ...params, appid: API_KEY });
+      const data = await fetchWithTimeout(BASE_URL, {
+        ...params,
+        appid: API_KEY,
+      });
       setWeatherData(data);
     } catch (err) {
       setError(err.message || "Ошибка при получении данных о погоде");
@@ -57,11 +66,10 @@ export const WeatherProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    if (initialFetchDone.current) return; // Если запрос уже был выполнен, пропускаем
+    if (initialFetchDone.current) return;
     initialFetchDone.current = true;
 
     if (navigator.geolocation) {
-      // console.log('render')
       navigator.geolocation.getCurrentPosition(
         async ({ coords }) => {
           try {
@@ -71,7 +79,9 @@ export const WeatherProvider = ({ children }) => {
           }
         },
         () => {
-          setError("Не удалось получить геолокацию. Введите название города или координаты вручную.");
+          setError(
+            "Не удалось получить геолокацию. Введите название города или координаты вручную."
+          );
         }
       );
     } else {

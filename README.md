@@ -1,13 +1,13 @@
 # 🌦️ Weather App 
 
+## 🌟 Overview
+
+The **Weather App** is a modern and responsive web application that provides real-time weather information for any location. Designed with a clean and user-friendly interface, this app retrieves accurate and up-to-date weather data using the [OpenWeather API](https://openweathermap.org/current).
+
 ## 🌐 Live Demo
 
 The app is deployed and available online!
 [Live Demo](https://pbarovsky.github.io/CDG_task_3_weather/)
-
-## 🌟 Overview
-
-The **Weather App** is a modern and responsive web application that provides real-time weather information for any location. Designed with a clean and user-friendly interface, this app retrieves accurate and up-to-date weather data using the [OpenWeather API](https://openweathermap.org/current).
 
 ## ✨ Features
 

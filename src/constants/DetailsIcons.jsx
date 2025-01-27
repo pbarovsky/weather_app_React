@@ -1,23 +1,14 @@
-const iconClass = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "10px 10px",
-  fontSize: "14px",
-  fontWeight: "500",
-  borderRadius: "50px",
-  backgroundColor: "#fff",
-  height: "34px",
-};
+const iconClass =
+  "h-[34px], bg-white rounded-[50px] text-[14px] p-[10px] inline-flex items-center justify-center";
 
 export const DetailsIcons = {
-  thermometer: <i className="bi bi-thermometer" style={iconClass}></i>,
-  thermometerLow: <i className="bi bi-thermometer-low" style={iconClass}></i>,
-  thermometerHigh: <i className="bi bi-thermometer-high" style={iconClass}></i>,
-  moisture: <i className="bi bi-moisture" style={iconClass}></i>,
-  wind: <i className="bi bi-wind" style={iconClass}></i>,
-  eye: <i className="bi bi-eye" style={iconClass}></i>,
-  cloudy: <i className="bi bi-cloudy" style={iconClass}></i>,
-  sunset: <i className="bi bi-sunset" style={iconClass}></i>,
-  sunrise: <i className="bi bi-sunrise" style={iconClass}></i>,
+  thermometer: <i className={`bi bi-thermometer ${iconClass}`}></i>,
+  thermometerLow: <i className={`bi bi-thermometer-low ${iconClass}`}></i>,
+  thermometerHigh: <i className={`bi bi-thermometer-high ${iconClass}`}></i>,
+  moisture: <i className={`bi bi-moisture ${iconClass}`}></i>,
+  wind: <i className={`bi bi-wind ${iconClass}`}></i>,
+  eye: <i className={`bi bi-eye ${iconClass}`}></i>,
+  cloudy: <i className={`bi bi-cloudy ${iconClass}`}></i>,
+  sunset: <i className={`bi bi-sunset ${iconClass}`}></i>,
+  sunrise: <i className={`bi bi-sunrise ${iconClass}`}></i>,
 };

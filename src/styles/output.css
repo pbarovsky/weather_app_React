@@ -671,6 +671,10 @@ body {
   height: 100%;
 }
 
+.h-\[34px\] {
+  height: 34px;
+}
+
 .max-h-\[300px\] {
   max-height: 300px;
 }
@@ -840,6 +844,10 @@ body {
   border-radius: 9999px;
 }
 
+.rounded-\[50px\] {
+  border-radius: 50px;
+}
+
 .border {
   border-width: 1px;
 }
@@ -953,6 +961,10 @@ body {
 
 .text-\[80px\] {
   font-size: 80px;
+}
+
+.text-\[14px\] {
+  font-size: 14px;
 }
 
 .font-bold {
