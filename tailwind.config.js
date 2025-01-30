@@ -17,11 +17,27 @@ export default {
         "blue-gray": "#F4F7FC",
         white: "#fff",
         black: "#1b1b1b",
-        backdrop: "rgba(0, 0, 0, 0.13)",
       },
-      boxShadow: { 
-        'custom': '0px 4px 10px rgba(0, 0, 0, 0.2)', 
-      }
+      boxShadow: {
+        'custom': '0px 4px 10px rgba(0, 0, 0, 0.2)',
+      },
+      keyframes: {
+        slideIn: {
+          '0%': { transform: 'translateX(100%)'},
+          '100%': { transform: 'translateX(0)'},
+        },
+        slideOut: {
+          '0%': { transform: 'translateX(0)'},
+          '100%': { transform: 'translateX(100%)'},
+        },
+      },
+      animation: {
+        slideIn: 'slideIn 0.3s ease-out forwards',
+        slideOut: 'slideOut 0.3s ease-out forwards',
+      },
+      translate: {
+        'full': '100%',
+      },      
     },
   },
   plugins: [

@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
 import { SettingOption } from "../molecules/SettingsOption";
 import { Button } from "../atoms/Button";
-import { AppContext } from "../../context/AppContext";
-import { createPortal } from "react-dom";
+import { useActions } from "../../hooks/useActions";
+import { useSelectors } from "../../hooks/useSelectors";
 import DELETE_ICON from "../../assets/icons/regular/delete.svg";
 
-export const SettingsModal = ({ onClose }) => {
-  const { settings, updateSetting } = useContext(AppContext);
+export const Sidebar = ({ isOpen, onClose }) => {
+  const { settings } = useSelectors();
+  const { updateSettings } = useActions();
 
   const options = [
     { label: "Видимость", key: "visibility" },
@@ -15,13 +15,16 @@ export const SettingsModal = ({ onClose }) => {
     { label: "Восход", key: "sunrise" },
   ];
 
-  return createPortal(
-    <div className="fixed top-0 left-0 w-full h-full bg-backdrop z-[9998]">
+  return (
+    <div
+      className={`fixed h-[100%] top-0 right-0 z-[9999] shadow-custom
+      ${isOpen ? "animate-slideIn" : "animate-slideOut"}`}
+      style={{ width: "320px" }}
+    >
       <div
         className="
-        border border-solid border-ccc max-w-[290px] w-full h-[250px] rounded-[15px] py-[10px] px-[20px] bg-white 
-        flex flex-col items-start justify-start gap-[15px] absolute top-2/4 left-2/4 z-[10000] 
-        transform translate-x-[-50%] translate-y-[-90%] shadow-custom
+        bg-white w-full h-full py-[10px] px-[20px] 
+        flex flex-col items-start justify-between gap-[15px]
       "
       >
         <div className="w-full flex items-center justify-between">
@@ -36,12 +39,12 @@ export const SettingsModal = ({ onClose }) => {
               key={key}
               label={label}
               checked={settings[key]}
-              onChange={(newChecked) => updateSetting(key, newChecked)}
+              onChange={(value) => updateSettings({ key, value })}
             />
           ))}
         </div>
+        <p className="mt-auto">design by pbarovsky</p>
       </div>
-    </div>,
-    document.getElementById("modal")
+    </div>
   );
 };

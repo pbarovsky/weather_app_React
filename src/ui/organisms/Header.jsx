@@ -1,19 +1,25 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import { SearchBar } from "../molecules/SearchBar";
 import { Button } from "../atoms/Button";
-import { SettingsModal } from "./SettingsModal";
-import { WeatherContext } from "../../context/WeatherContext";
-import { formatSearch } from "../../helpers/formatSearch";
+import { Sidebar } from "./Sidebar";
+import { formatSearch } from "../../shared/formatSearch";
+import { useActions } from "../../hooks/useActions";
 import SEARCH_ICON from "../../assets/icons/regular/search.svg";
 import SETTINGS_ICON from "../../assets/icons/regular/settings.svg";
 
 export const Header = ({ isSettingsOpen, toggleSettings }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { getWeatherByCity, getWeatherByCoords } = useContext(WeatherContext);
+  const {fetchWeatherByCity, fetchWeatherByCoords} = useActions();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    formatSearch(searchTerm, getWeatherByCity, getWeatherByCoords);
+    const searchParams = formatSearch(searchTerm);
+
+    if (searchParams.lat && searchParams.lon) {
+      fetchWeatherByCoords(searchParams);
+    } else if (searchParams.city) {
+      fetchWeatherByCity(searchParams.city);
+    }
     setSearchTerm("");
   };
 
@@ -50,7 +56,7 @@ export const Header = ({ isSettingsOpen, toggleSettings }) => {
         <Button onClick={toggleSettings}>
           <img src={SETTINGS_ICON} alt="Settings" />
         </Button>
-        {isSettingsOpen && <SettingsModal onClose={toggleSettings} />}
+        <Sidebar isOpen={isSettingsOpen} onClose={toggleSettings} />
       </div>
     </header>
   );

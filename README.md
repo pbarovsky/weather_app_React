@@ -49,6 +49,8 @@ The development server will run on `http://localhost:5173/CDG_task_3_weather/`. 
 This project is built with the following technologies:
 
 - **React**: A popular JavaScript library for building interactive user interfaces.
+- **Redux**: A state management library for JavaScript applications.
+- **Redux toolkit**: A set of tools and best practices for efficient Redux development, making state management simpler and more efficient.
 - **Vite**: A fast build tool and development server for modern JavaScript applications.
 - **Tailwind CSS**: A utility-first CSS framework for quickly styling UI components.
 - **Bootstrap Icons**: A library of free, high-quality icons for enhancing the user interface.

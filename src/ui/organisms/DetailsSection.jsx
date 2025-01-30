@@ -1,15 +1,14 @@
-import React, { useContext, useRef, useState, useEffect } from "react";
-import { WeatherContext } from "../../context/WeatherContext";
-import { AppContext } from "../../context/AppContext";
+import { useRef, useState, useEffect } from "react";
 import { DetailsIcons as icon } from "../../constants/DetailsIcons";
 import { ButtonScroll } from "../molecules/ButtonScroll";
-import { LoadingErrorState } from "../molecules/LoadingErrorState";
-import { formatTime } from "../../helpers/formatTime";
+import { formatTime } from "../../shared/formatTime";
 import { DetailItem } from "../atoms/DetailItem";
+import { LoadingErrorState } from "../molecules/LoadingErrorState";
+import { useSelectors } from "../../hooks/useSelectors";
 
 export const DetailsSection = () => {
-  const { weatherData, loading, error } = useContext(WeatherContext);
-  const { settings } = useContext(AppContext);
+  const { weatherData, weatherLoading, weatherError, settings } =
+    useSelectors();
   const containerRef = useRef(null);
   const [isVertical, setIsVertical] = useState(false);
 
@@ -23,38 +22,77 @@ export const DetailsSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const scroll = (direction) => {
-    if (containerRef.current) {
-      const scrollOptions = isVertical
-        ? { top: direction === "left" ? -230 : 230, behavior: "smooth" }
-        : { left: direction === "left" ? -230 : 230, behavior: "smooth" };
-
-      containerRef.current.scrollBy(scrollOptions);
-    }
-  };
-
-  if (loading || error || !weatherData) {
+  if (weatherLoading || weatherError || !weatherData) {
     return (
       <LoadingErrorState
-        loading={loading}
-        error={error}
+        loading={weatherLoading}
+        error={weatherError}
         weatherData={weatherData}
       />
     );
   }
 
+  const scroll = (direction) => {
+    if (containerRef.current) {
+      const scrollOptions = isVertical
+        ? { top: direction === "left" ? -230 : 230, behavior: "smooth" }
+        : { left: direction === "left" ? -230 : 230, behavior: "smooth" };
+      containerRef.current.scrollBy(scrollOptions);
+    }
+  };
+
   const { main, wind, visibility, clouds, sys } = weatherData;
 
   const details = [
-    { label: "Ощущается как", value: `${Math.round(main.feels_like)} °C`, icon: icon.thermometer },
-    { label: "MIN температура", value: `${Math.round(main.temp_min)} °C`, icon: icon.thermometerLow },
-    { label: "MAX температура", value: `${Math.round(main.temp_max)} °C`, icon: icon.thermometerHigh },
-    { label: "Влажность", value: `${main.humidity} %`, icon: icon.moisture },
-    { label: "Скорость ветра", value: `${wind.speed} м/с`, icon: icon.wind },
-    settings.visibility && { label: "Видимость", value: `${visibility / 1000} км`, icon: icon.eye },
-    settings.clouds && { label: "Облачность", value: `${clouds.all} %`, icon: icon.cloudy },
-    settings.sunset && { label: "Закат", value: formatTime(sys.sunset), icon: icon.sunset },
-    settings.sunrise && { label: "Восход", value: formatTime(sys.sunrise), icon: icon.sunrise },
+    main && {
+      label: "Ощущается как",
+      value: `${Math.round(main.feels_like)} °C`,
+      icon: icon.thermometer,
+    },
+    main && {
+      label: "MIN температура",
+      value: `${Math.round(main.temp_min)} °C`,
+      icon: icon.thermometerLow,
+    },
+    main && {
+      label: "MAX температура",
+      value: `${Math.round(main.temp_max)} °C`,
+      icon: icon.thermometerHigh,
+    },
+    main && {
+      label: "Влажность",
+      value: `${main.humidity} %`,
+      icon: icon.moisture,
+    },
+    wind && {
+      label: "Скорость ветра",
+      value: `${wind.speed} м/с`,
+      icon: icon.wind,
+    },
+    settings.visibility &&
+      visibility && {
+        label: "Видимость",
+        value: `${visibility / 1000} км`,
+        icon: icon.eye,
+      },
+    settings.clouds &&
+      clouds && {
+        label: "Облачность",
+        value: `${clouds.all} %`,
+        icon: icon.cloudy,
+      },
+    settings.sunset &&
+      sys && {
+        label: "Закат",
+        value: formatTime(sys.sunset),
+        icon: icon.sunset,
+      },
+    settings.sunrise &&
+      sys && {
+        label: "Восход",
+        value: formatTime(sys.sunrise),
+        icon: icon.sunrise,
+      },
   ].filter(Boolean);
 
   return (
@@ -64,7 +102,7 @@ export const DetailsSection = () => {
       md:w-[300px] sl:w-[500px] sm:w-[400px] xl:flex-row xl:border-none xl:w-[845px] lg:flex-row lg:h-[80px] lg:w-[490px] lg:border-none
       "
     >
-      <ButtonScroll onClick={() => scroll("left")} direction="left"/>
+      <ButtonScroll onClick={() => scroll("left")} direction="left" />
       <section
         className="
         w-full h-[320px] flex flex-col gap-[20px] py-[10px] px-0 items-center overflow-hidden relative scroll-smooth

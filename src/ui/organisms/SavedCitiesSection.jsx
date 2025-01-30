@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { AppContext } from "../../context/AppContext";
-import { WeatherContext } from "../../context/WeatherContext";
+import { useState, useEffect } from "react";
 import { SavedCityItem } from "../atoms/SavedCityItem";
 import { SearchBar } from "../molecules/SearchBar";
+import { useSelectors } from "../../hooks/useSelectors";
+import { useActions } from "../../hooks/useActions";
 
 export const SavedCitiesSection = () => {
-  const { favorites, toggleFavorite } = useContext(AppContext);
-  const { getWeatherByCity } = useContext(WeatherContext);
+  const {favorites} = useSelectors();
+  const {toggleFavorite, fetchWeatherByCity} = useActions();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredSavedCities, setFilteredSavedCities] = useState(favorites);
 
@@ -19,6 +19,11 @@ export const SavedCitiesSection = () => {
     }, 400);
     return () => clearTimeout(timeoutId);
   }, [searchTerm, favorites]);
+
+  const handleCityClick = (city) => {
+    fetchWeatherByCity(city.name);
+    setSearchTerm("");
+  };
 
   return (
     <section
@@ -40,7 +45,7 @@ export const SavedCitiesSection = () => {
             key={city.id}
             city={city}
             onCityClick={() => {
-              getWeatherByCity(city.name);
+              fetchWeatherByCity(city.name);
               setSearchTerm("");
             }}
             onCityDelete={() => toggleFavorite(city)}
