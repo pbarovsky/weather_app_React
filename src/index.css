@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .hidden-sidebar {
+    visibility: hidden;
+  }
+
+  .visible-sidebar {
+    visibility: visible;
+  }
+}

@@ -3,10 +3,12 @@ import { Header } from "./ui/organisms/Header";
 import { WeatherSection } from "./ui/organisms/WeatherSection";
 import { DetailsSection } from "./ui/organisms/DetailsSection";
 import { SavedCitiesSection } from "./ui/organisms/SavedCitiesSection";
+import { Sidebar } from "./ui/organisms/Sidebar";
 import { useActions } from "./hooks/useActions";
 
 const App = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [activateSidebar, setActivateSidebar] = useState(false);
   const { fetchWeatherByCoords } = useActions();
 
   useEffect(() => {
@@ -18,11 +20,14 @@ const App = () => {
     });
   }, []);
 
-  const toggleSettings = () => setIsSettingsOpen((prev) => !prev);
+  const toggleSettings = () => {
+    setIsSettingsOpen((prev) => !prev);
+    setActivateSidebar(true);
+  };
 
   return (
     <>
-      <Header isSettingsOpen={isSettingsOpen} toggleSettings={toggleSettings} />
+      <Header activateSidebar={activateSidebar} isSettingsOpen={isSettingsOpen} toggleSettings={toggleSettings} />
       <div className="flex flex-col justify-center items-center gap-[30px] my-[50px] mx-auto flex-wrap lg:flex-row xl:flex-row">
         <main className="flex flex-col gap-[30px] self-start flex-wrap md:flex-row lg:flex-col">
           <WeatherSection />

@@ -7,7 +7,7 @@ import { useActions } from "../../hooks/useActions";
 import SEARCH_ICON from "../../assets/icons/regular/search.svg";
 import SETTINGS_ICON from "../../assets/icons/regular/settings.svg";
 
-export const Header = ({ isSettingsOpen, toggleSettings }) => {
+export const Header = ({ isSettingsOpen, toggleSettings, activateSidebar }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const {fetchWeatherByCity, fetchWeatherByCoords} = useActions();
 
@@ -56,7 +56,7 @@ export const Header = ({ isSettingsOpen, toggleSettings }) => {
         <Button onClick={toggleSettings}>
           <img src={SETTINGS_ICON} alt="Settings" />
         </Button>
-        <Sidebar isOpen={isSettingsOpen} onClose={toggleSettings} />
+        <Sidebar isOpen={isSettingsOpen} activateSidebar={activateSidebar} onClose={toggleSettings} />
       </div>
     </header>
   );
