@@ -20,18 +20,8 @@ export const SavedCitiesSection = () => {
     return () => clearTimeout(timeoutId);
   }, [searchTerm, favorites]);
 
-  const handleCityClick = (city) => {
-    fetchWeatherByCity(city.name);
-    setSearchTerm("");
-  };
-
   return (
-    <section
-      className="
-      flex flex-col border border-solid border-ccc rounded-[15px] py-[10px] px-[20px] items-start self-start gap-[15px] min-h-[200px] w-[300px]
-      sm:w-[400px] sl:w-[500px] md:w-[340px] lg:w-[300px] lg:min-h-[410px]
-      "
-    >
+    <section className="flex flex-col border border-solid border-ccc rounded-[15px] py-[10px] px-[20px] items-start self-start gap-[15px] min-h-[200px] w-[300px] sm:w-[400px] sl:w-[500px] md:w-[340px] lg:w-[300px] lg:min-h-[410px]">
       <SearchBar
         value={searchTerm}
         onChange={(value) => setSearchTerm(value)}

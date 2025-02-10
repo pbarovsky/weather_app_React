@@ -565,14 +565,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.hidden-sidebar {
-  visibility: hidden;
-}
-
-.visible-sidebar {
-  visibility: visible;
-}
-
 .fixed {
   position: fixed;
 }
@@ -647,10 +639,6 @@ body {
   display: inline-flex;
 }
 
-.hidden {
-  display: none;
-}
-
 .h-\[100\%\] {
   height: 100%;
 }
@@ -677,6 +665,22 @@ body {
 
 .h-full {
   height: 100%;
+}
+
+.h-\[340px\] {
+  height: 340px;
+}
+
+.h-\[360px\] {
+  height: 360px;
+}
+
+.h-\[380px\] {
+  height: 380px;
+}
+
+.h-\[300px\] {
+  height: 300px;
 }
 
 .max-h-\[300px\] {
@@ -707,22 +711,8 @@ body {
   width: 100%;
 }
 
-.w-\[320px\] {
-  width: 320px;
-}
-
 .max-w-\[325px\] {
   max-width: 325px;
-}
-
-.translate-x-0 {
-  --tw-translate-x: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-x-full {
-  --tw-translate-x: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .rotate-90 {
@@ -1013,18 +1003,6 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-\[1\] {
-  opacity: 1;
-}
-
-.opacity-100 {
-  opacity: 1;
-}
-
 .shadow-custom {
   --tw-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   --tw-shadow-colored: 0px 4px 10px var(--tw-shadow-color);
@@ -1044,18 +1022,6 @@ body {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.transition-opacity {
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.transition-transform {
-  transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1138,6 +1104,10 @@ body {
     height: 500px;
   }
 
+  .md\:h-\[360px\] {
+    height: 360px;
+  }
+
   .md\:w-\[200px\] {
     width: 200px;
   }
@@ -1178,6 +1148,10 @@ body {
 @media (min-width: 1024px) {
   .lg\:mt-0 {
     margin-top: 0px;
+  }
+
+  .lg\:h-\[100px\] {
+    height: 100px;
   }
 
   .lg\:h-\[300px\] {

@@ -44,7 +44,6 @@ export const getWeatherAssets = (weatherData) => {
     return { icon: weatherIcons.Mist, cardColor: weatherColors.Mist };
   }
 
-  const { icon = "", color: cardColor = "" } =
-    conditionGroups[weatherCondition] || {};
+  const { icon = "", color: cardColor = "" } = conditionGroups[weatherCondition] || {};
   return { icon, cardColor };
 };

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "./ui/organisms/Header";
 import { WeatherSection } from "./ui/organisms/WeatherSection";
 import { DetailsSection } from "./ui/organisms/DetailsSection";
 import { SavedCitiesSection } from "./ui/organisms/SavedCitiesSection";
-import { Sidebar } from "./ui/organisms/Sidebar";
 import { useActions } from "./hooks/useActions";
 
 const App = () => {
