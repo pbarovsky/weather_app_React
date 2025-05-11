@@ -22,8 +22,8 @@ Follow these steps to clone, install, and run the project locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/pbarovsky/CDG_task_3_weather.git
-cd CDG_task_3_weather
+git clone https://github.com/pbarovsky/weather_app_React.git
+cd weather_app_React
 ```
 
 ### 2. Install Dependencies
@@ -42,7 +42,7 @@ npm run dev
 
 ### 4. Open the App in Your Browser
 
-The development server will run on `http://localhost:5173/CDG_task_3_weather/`. Open this link in your web browser to view the app.
+The development server will run on `http://localhost:5173/weather_app_React/`. Open this link in your web browser to view the app.
 
 ## Technologies Used
 
