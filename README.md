@@ -1,21 +1,21 @@
-# 🌦️ Weather App 
+# Weather App
 
-## 🌟 Overview
+## Overview
 
 The **Weather App** is a modern and responsive web application that provides real-time weather information for any location. Designed with a clean and user-friendly interface, this app retrieves accurate and up-to-date weather data using the [OpenWeather API](https://openweathermap.org/current).
 
-## 🌐 Live Demo
+## Live Demo
 
 The app is deployed and available online!
-[Live Demo](https://pbarovsky.github.io/CDG_task_3_weather/)
+[Live Demo](https://pbarovsky.github.io/weather_app_React/)
 
-## ✨ Features
+## Features
 
 - **Real-Time Weather Details**: View essential weather metrics like temperature, humidity, wind speed, visibility...
 - **Dynamic Layout**: Fully responsive and optimized for various screen sizes (desktop, tablet, and mobile).
 - **Smooth Animations and Transitions**: Built with Tailwind CSS for a polished and modern user experience.
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these steps to clone, install, and run the project locally:
 
@@ -44,7 +44,7 @@ npm run dev
 
 The development server will run on `http://localhost:5173/CDG_task_3_weather/`. Open this link in your web browser to view the app.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 This project is built with the following technologies:
 
